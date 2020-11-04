@@ -1944,7 +1944,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -19651,6 +19650,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c("h1", { staticClass: "mb-4" }, [_vm._v("Archimedean Spiral")]),
+    _vm._v(" "),
     _c("p", [
       _c(
         "button",
@@ -32090,8 +32091,8 @@ function pStr(point) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/mark/Apolo-Exam/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/mark/Apolo-Exam/resources/css/app.scss */"./resources/css/app.scss");
+__webpack_require__(/*! /home/mark/test/Apolo-Exam/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/mark/test/Apolo-Exam/resources/css/app.scss */"./resources/css/app.scss");
 
 
 /***/ })

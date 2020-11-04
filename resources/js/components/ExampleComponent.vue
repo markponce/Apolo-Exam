@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <h1>Click to refresh.</h1> -->
+    <h1 class="mb-4">Archimedean Spiral</h1>
     <p>
       <button
         @click="generateRandom"
@@ -15,7 +15,6 @@
       <strong>Error!</strong>
       {{ errMsg }}
     </p>
-    <!-- <p v-if="isLoading">Loading...<p> -->
     <svg
       v-if="randomText"
       class="spiral-svg"
