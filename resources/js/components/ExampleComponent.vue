@@ -1,22 +1,20 @@
 <template>
   <div>
     <h1 class="mb-4">Archimedean Spiral</h1>
-    <p>
-      <button
+      <button 
         @click="generateRandom"
         :disabled="isLoading"
         type="button"
-        class="btn btn-primary"
+        class="btn btn-primary mb-4"
       >
         Click to refresh
       </button>
-    </p>
+
     <p v-if="errMsg" class="alert alert-danger" role="alert">
       <strong>Error!</strong>
       {{ errMsg }}
     </p>
     <svg
-      v-if="randomText"
       class="spiral-svg"
       xmlns="http://www.w3.org/2000/svg"
       width="400"

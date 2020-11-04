@@ -1942,8 +1942,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -19652,17 +19650,15 @@ var render = function() {
   return _c("div", [
     _c("h1", { staticClass: "mb-4" }, [_vm._v("Archimedean Spiral")]),
     _vm._v(" "),
-    _c("p", [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { disabled: _vm.isLoading, type: "button" },
-          on: { click: _vm.generateRandom }
-        },
-        [_vm._v("\n      Click to refresh\n    ")]
-      )
-    ]),
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-primary mb-4",
+        attrs: { disabled: _vm.isLoading, type: "button" },
+        on: { click: _vm.generateRandom }
+      },
+      [_vm._v("\n      Click to refresh\n    ")]
+    ),
     _vm._v(" "),
     _vm.errMsg
       ? _c(
@@ -19675,33 +19671,27 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
-    _vm.randomText
-      ? _c(
-          "svg",
-          {
-            staticClass: "spiral-svg",
-            attrs: {
-              xmlns: "http://www.w3.org/2000/svg",
-              width: "400",
-              height: "400",
-              viewBox: "0 0 800 800"
-            }
-          },
-          [
-            _c("path", { attrs: { id: "spiral", d: _vm.paths, fill: "none" } }),
-            _vm._v(" "),
-            _c(
-              "text",
-              { attrs: { "font-family": "Verdana", "font-size": "24" } },
-              [
-                _c("textPath", { attrs: { "xlink:href": "#spiral" } }, [
-                  _vm._v("\n        " + _vm._s(_vm.randomText) + "\n      ")
-                ])
-              ]
-            )
-          ]
-        )
-      : _vm._e()
+    _c(
+      "svg",
+      {
+        staticClass: "spiral-svg",
+        attrs: {
+          xmlns: "http://www.w3.org/2000/svg",
+          width: "400",
+          height: "400",
+          viewBox: "0 0 800 800"
+        }
+      },
+      [
+        _c("path", { attrs: { id: "spiral", d: _vm.paths, fill: "none" } }),
+        _vm._v(" "),
+        _c("text", { attrs: { "font-family": "Verdana", "font-size": "24" } }, [
+          _c("textPath", { attrs: { "xlink:href": "#spiral" } }, [
+            _vm._v("\n        " + _vm._s(_vm.randomText) + "\n      ")
+          ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []
