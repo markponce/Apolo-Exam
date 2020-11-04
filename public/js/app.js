@@ -1908,13 +1908,95 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _path_helper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../path-helper */ "./resources/js/path-helper.js");
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      // randoms: [],
+      randomText: "",
+      paths: "",
+      isLoading: false,
+      errMsg: ""
+    };
+  },
+  methods: {
+    generateRandom: function generateRandom() {
+      var _this = this;
+
+      // this.randomText = "Loading...";
+      this.isLoading = true;
+      this.paths = "";
+      this.randomText = "";
+      this.errMsg = ""; // setTimeout(() => {
+
+      axios.get("/api/random").then(function (response) {
+        return response.data;
+      }).then(function (data) {
+        console.log(data);
+        _this.randomText = "";
+
+        for (var i = 0; i < data.length; i++) {
+          // console.log(data[i].values);
+          _this.randomText += data[i].values + " ";
+
+          for (var j = 0; j < data[i].breakdowns.length; j++) {
+            _this.randomText += data[i].breakdowns[j].values + " "; // console.log(data[i].breakdowns[j].values);
+          }
+        }
+
+        console.log(_this.randomText);
+        _this.paths = Object(_path_helper__WEBPACK_IMPORTED_MODULE_0__["default"])({
+          x: 400,
+          y: 400
+        }, 0, 50, 0, 6 * 3600, 30); // console.log(this.path);
+
+        _this.isLoading = false;
+      })["catch"](function (err) {
+        _this.paths = "";
+        _this.isLoading = false;
+        _this.errMsg = err.toString();
+      }); // }, 1000);
+    }
+  },
   mounted: function mounted() {
-    console.log("Example component mounted");
+    this.generateRandom();
   }
 });
 
@@ -19568,7 +19650,58 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("Hello Worlds.")])
+  return _c("div", [
+    _c("p", [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { disabled: _vm.isLoading, type: "button" },
+          on: { click: _vm.generateRandom }
+        },
+        [_vm._v("\n      Click to refresh\n    ")]
+      )
+    ]),
+    _vm._v(" "),
+    _vm.errMsg
+      ? _c(
+          "p",
+          { staticClass: "alert alert-danger", attrs: { role: "alert" } },
+          [
+            _c("strong", [_vm._v("Error!")]),
+            _vm._v("\n    " + _vm._s(_vm.errMsg) + "\n  ")
+          ]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.randomText
+      ? _c(
+          "svg",
+          {
+            staticClass: "spiral-svg",
+            attrs: {
+              xmlns: "http://www.w3.org/2000/svg",
+              width: "400",
+              height: "400",
+              viewBox: "0 0 800 800"
+            }
+          },
+          [
+            _c("path", { attrs: { id: "spiral", d: _vm.paths, fill: "none" } }),
+            _vm._v(" "),
+            _c(
+              "text",
+              { attrs: { "font-family": "Verdana", "font-size": "24" } },
+              [
+                _c("textPath", { attrs: { "xlink:href": "#spiral" } }, [
+                  _vm._v("\n        " + _vm._s(_vm.randomText) + "\n      ")
+                ])
+              ]
+            )
+          ]
+        )
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -31739,10 +31872,10 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/css/app.css":
-/*!*******************************!*\
-  !*** ./resources/css/app.css ***!
-  \*******************************/
+/***/ "./resources/css/app.scss":
+/*!********************************!*\
+  !*** ./resources/css/app.scss ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -31771,14 +31904,9 @@ var app = new Vue({
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
   \***********************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-!(function webpackMissingModule() { var e = new Error("Cannot find module './views/app.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -31786,8 +31914,9 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); // window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+window.axios.defaults.withCredentials = true;
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -31801,16 +31930,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
-
- //Main pages
-
-
-var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-  el: '#app',
-  components: {
-    App: !(function webpackMissingModule() { var e = new Error("Cannot find module './views/app.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
-  }
-});
 
 /***/ }),
 
@@ -31883,15 +32002,96 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/path-helper.js":
+/*!*************************************!*\
+  !*** ./resources/js/path-helper.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function lineIntersection(m1, b1, m2, b2) {
+  if (m1 === m2) {
+    throw new Error("parallel slopes");
+  }
+
+  var x = (b2 - b1) / (m1 - m2);
+  return {
+    x: x,
+    y: m1 * x + b1
+  };
+}
+
+function pStr(point) {
+  return "".concat(point.x, ",").concat(point.y, " ");
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (function (center, startRadius, spacePerLoop, startTheta, endTheta, thetaStep) {
+  // Rename spiral parameters for the formula r = a + bθ
+  var a = startRadius; // start distance from center
+
+  var b = spacePerLoop / Math.PI / 2; // space between each loop
+  // convert angles to radians
+
+  var oldTheta = startTheta * Math.PI / 180;
+  var newTheta = oldTheta;
+  endTheta = endTheta * Math.PI / 180;
+  thetaStep = thetaStep * Math.PI / 180; // radii
+
+  var oldR,
+      newR = a + b * newTheta; // start and end points
+
+  var oldPoint = {
+    x: 0,
+    y: 0
+  };
+  var newPoint = {
+    x: center.x + newR * Math.cos(newTheta),
+    y: center.y + newR * Math.sin(newTheta)
+  }; // slopes of tangents
+
+  var newSlope = (b * Math.sin(oldTheta) + (a + b * newTheta) * Math.cos(oldTheta)) / (b * Math.cos(oldTheta) - (a + b * newTheta) * Math.sin(oldTheta));
+  var path = "M " + pStr(newPoint);
+
+  while (oldTheta < endTheta - thetaStep) {
+    oldTheta = newTheta;
+    newTheta += thetaStep;
+    oldR = newR;
+    newR = a + b * newTheta;
+    oldPoint.x = newPoint.x;
+    oldPoint.y = newPoint.y;
+    newPoint.x = center.x + newR * Math.cos(newTheta);
+    newPoint.y = center.y + newR * Math.sin(newTheta); // Slope calculation with the formula:
+    // (b * sinΘ + (a + bΘ) * cosΘ) / (b * cosΘ - (a + bΘ) * sinΘ)
+
+    var aPlusBTheta = a + b * newTheta;
+    var oldSlope = newSlope;
+    newSlope = (b * Math.sin(newTheta) + aPlusBTheta * Math.cos(newTheta)) / (b * Math.cos(newTheta) - aPlusBTheta * Math.sin(newTheta));
+    var oldIntercept = -(oldSlope * oldR * Math.cos(oldTheta) - oldR * Math.sin(oldTheta));
+    var newIntercept = -(newSlope * newR * Math.cos(newTheta) - newR * Math.sin(newTheta));
+    var controlPoint = lineIntersection(oldSlope, oldIntercept, newSlope, newIntercept); // Offset the control point by the center offset.
+
+    controlPoint.x += center.x;
+    controlPoint.y += center.y;
+    path += "Q " + pStr(controlPoint) + pStr(newPoint);
+  } // console.log(path)
+
+
+  return path;
+});
+
+/***/ }),
+
 /***/ 0:
-/*!***********************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/css/app.css ***!
-  \***********************************************************/
+/*!************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/css/app.scss ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /mnt/c/Users/mark/Desktop/projects/exam/apollo-exam/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /mnt/c/Users/mark/Desktop/projects/exam/apollo-exam/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /home/mark/Apolo-Exam/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/mark/Apolo-Exam/resources/css/app.scss */"./resources/css/app.scss");
 
 
 /***/ })

@@ -23,7 +23,7 @@ class RandomFactory extends Factory
     public function definition()
     {
         return [
-            'values' => $this->faker->name,
+            'values' => $this->faker->firstName,
         ];
     }
 }

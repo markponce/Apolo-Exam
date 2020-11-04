@@ -18,6 +18,8 @@
         </style>
         <link rel="stylesheet" href="{{ mix('css/app.css') }}" />
         <title>{{env('APP_NAME')}}</title>
+        <!-- CSS only -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
 
 
     </head>

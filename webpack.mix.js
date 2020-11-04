@@ -10,8 +10,10 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+require('laravel-mix-clean');
 
 mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+    .sass('resources/css/app.scss', 'public/css')
+    .browserSync({
+        proxy: 'http://localhost:8000'
+    });

@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Breakdown;
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use Illuminate\Support\Str;
 
 class BreakdownFactory extends Factory
 {
@@ -23,7 +23,9 @@ class BreakdownFactory extends Factory
     public function definition()
     {
         return [
-            'values' => $this->faker->name,
+            'values' => Str::random(5),
         ];
     }
+
+
 }
