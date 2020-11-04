@@ -10,10 +10,10 @@
         Click to refresh
       </button>
 
-    <p v-if="errMsg" class="alert alert-danger" role="alert">
-      <strong>Error!</strong>
-      {{ errMsg }}
-    </p>
+    <div v-if="errMsg" class="alert alert-danger" role="alert">
+      <h5>Error!</h5>
+      <div>{{errMsg}}</div>
+    </div>
     <svg
       class="spiral-svg"
       xmlns="http://www.w3.org/2000/svg"
